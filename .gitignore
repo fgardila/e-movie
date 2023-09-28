@@ -24,10 +24,13 @@ local.properties
 .idea/tasks.xml
 .idea/caches/
 
+
 # Android Studio folders
 .idea/libraries/
 .idea/modules.xml
 .idea/dictionaries/
+.idea/codeStyles/
+.idea/
 
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild/
