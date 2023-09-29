@@ -46,12 +46,17 @@ dependencies {
     implementation(libs.material)
     implementation(libs.constraintlayout)
 
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.okhttp3.login.interceptor)
+
+    implementation(libs.io.coil)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
