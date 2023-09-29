@@ -17,6 +17,10 @@ class HomeViewModel @Inject constructor(private val useCase: TheMovieUseCase) : 
     private var _state = MutableStateFlow<HomeState>(HomeState.Loading)
     val state: StateFlow<HomeState> = _state
 
+    init {
+        getMovies()
+    }
+
     fun getMovies() {
         viewModelScope.launch {
             _state.value = HomeState.Loading

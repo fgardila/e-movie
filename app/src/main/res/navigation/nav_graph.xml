@@ -18,5 +18,12 @@
         android:id="@+id/detailFragment"
         android:name="com.code93.e_movie.ui.detail.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="idMovie"
+            app:argType="integer" />
+        <argument
+            android:name="posterPath"
+            app:argType="string" />
+    </fragment>
 </navigation>
