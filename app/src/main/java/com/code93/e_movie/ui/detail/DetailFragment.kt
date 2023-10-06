@@ -53,6 +53,7 @@ class DetailFragment : Fragment() {
 
     private fun loadMovie(detailsModel: DetailsModel) {
         binding.tvTitleMovie.text = detailsModel.title
+        binding.tvOverview.text = detailsModel.overview
     }
 
     private fun showToast(s: String) {
