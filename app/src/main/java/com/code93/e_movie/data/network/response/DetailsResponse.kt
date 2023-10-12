@@ -2,13 +2,14 @@ package com.code93.e_movie.data.network.response
 
 
 import com.code93.e_movie.domain.model.DetailsModel
+import com.code93.e_movie.domain.model.getGenresByIds
 import com.google.gson.annotations.SerializedName
 
 data class DetailsResponse(
     @SerializedName("adult")
     val adult: Boolean,
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
     @SerializedName("belongs_to_collection")
     val belongsToCollection: Any,
     @SerializedName("budget")
@@ -38,7 +39,7 @@ data class DetailsResponse(
     @SerializedName("release_date")
     val releaseDate: String,
     @SerializedName("revenue")
-    val revenue: Int,
+    val revenue: String,
     @SerializedName("runtime")
     val runtime: Int,
     @SerializedName("spoken_languages")
@@ -52,14 +53,14 @@ data class DetailsResponse(
     @SerializedName("video")
     val video: Boolean,
     @SerializedName("vote_average")
-    val voteAverage: Int,
+    val voteAverage: Double,
     @SerializedName("vote_count")
-    val voteCount: Int
+    val voteCount: Double
 ) {
     fun toDomain(): DetailsModel {
         return DetailsModel(
-            backdropPath = this.backdropPath,
-            genres = emptyList(),
+            backdropPath = this.backdropPath.orEmpty(),
+            genres = getGenresByIds(getIdsFromGenres(genres)),
             id = this.id,
             originalLanguage = this.originalLanguage,
             overview = this.overview,

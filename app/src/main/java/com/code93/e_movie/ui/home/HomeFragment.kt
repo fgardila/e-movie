@@ -43,15 +43,19 @@ class HomeFragment : Fragment() {
                     when (it) {
                         is HomeState.Error -> showToast("Loading")
                         HomeState.Loading -> showToast("Loading")
-                        is HomeState.Success -> loadAdapters(it.topRatedModel, it.upcomingModel)
+                        is HomeState.SuccessTopRated -> loadTopRated(it.topRatedModel)
+                        is HomeState.SuccessUpcoming -> loadUpcoming(it.upcomingModel)
                     }
                 }
             }
         }
     }
 
-    private fun loadAdapters(topRatedModel: TopRatedModel, upcomingModel: UpcomingModel) {
+    private fun loadTopRated(topRatedModel: TopRatedModel) {
         topRatedAdapter.setListResultModel(topRatedModel.resultModels)
+    }
+
+    private fun loadUpcoming(upcomingModel: UpcomingModel) {
         upcomingAdapter.setListResultModel(upcomingModel.resultModels)
     }
 

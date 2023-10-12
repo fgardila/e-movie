@@ -14,17 +14,50 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor(private val useCase: TheMovieUseCase) : ViewModel() {
 
-    private var _state = MutableStateFlow<DetailState>(DetailState.Loading)
+    private var _state = MutableStateFlow<DetailState>(DetailState.LoadingDetail)
     val state: StateFlow<DetailState> = _state
 
-    fun getDetail(idMovie: Int) {
+    fun getMovie(idMovie: Int) {
+        _state.value = DetailState.LoadingDetail
+        _state.value = DetailState.LoadingVideo
+        getDetail(idMovie)
+        getVideo(idMovie)
+        getCast(idMovie)
+    }
+
+    private fun getCast(idMovie: Int) {
         viewModelScope.launch {
-            _state.value = DetailState.Loading
+            val result = withContext(Dispatchers.IO) {
+                useCase.getCast(idMovie = idMovie)
+            }
+            if (result != null) {
+                _state.value = DetailState.SuccessCast(result)
+            } else {
+                _state.value = DetailState.Error("Error al obtener actores")
+            }
+        }
+    }
+
+    private fun getDetail(idMovie: Int) {
+        viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
                 useCase.getDetails(idMovie = idMovie)
             }
             if (result != null) {
-                _state.value = DetailState.Success(result)
+                _state.value = DetailState.SuccessDetail(result)
+            } else {
+                _state.value = DetailState.Error("Error al obtener detalles")
+            }
+        }
+    }
+
+    private fun getVideo(idMovie: Int) {
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO) {
+                useCase.getVideo(idMovie = idMovie)
+            }
+            if (result != null) {
+                _state.value = DetailState.SuccessVideo(result)
             } else {
                 _state.value = DetailState.Error("Error al obtener detalles")
             }

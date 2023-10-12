@@ -56,9 +56,11 @@ dependencies {
     implementation(libs.retrofit.converter.gson)
     implementation(libs.okhttp3.login.interceptor)
 
-    implementation(libs.io.coil)
+    implementation(libs.glide)
+    kapt(libs.glide.compiler)
 
     implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
     kapt(libs.room.compiler)
 
     testImplementation(libs.junit)

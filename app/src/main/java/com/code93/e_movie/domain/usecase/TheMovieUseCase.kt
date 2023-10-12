@@ -12,5 +12,7 @@ class TheMovieUseCase @Inject constructor(private val repository: Repository) {
 
     suspend fun getVideo(idMovie: Int) = repository.getVideos(idMovie)
 
+    suspend fun getCast(idMovie: Int) = repository.getCast(idMovie)
+
 
 }

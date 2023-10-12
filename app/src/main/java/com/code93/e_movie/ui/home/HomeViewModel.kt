@@ -21,7 +21,7 @@ class HomeViewModel @Inject constructor(private val useCase: TheMovieUseCase) : 
         getMovies()
     }
 
-    fun getMovies() {
+    private fun getMovies() {
         viewModelScope.launch {
             _state.value = HomeState.Loading
             val resultTopRated = withContext(Dispatchers.IO) {
@@ -30,8 +30,14 @@ class HomeViewModel @Inject constructor(private val useCase: TheMovieUseCase) : 
             val resultUpcoming = withContext(Dispatchers.IO) {
                 useCase.getUpcoming()
             }
-            if (resultTopRated != null && resultUpcoming != null) {
-                _state.value = HomeState.Success(resultTopRated, resultUpcoming)
+            if (resultTopRated != null) {
+                _state.value = HomeState.SuccessTopRated(resultTopRated)
+            } else {
+                _state.value = HomeState.Error("Error")
+            }
+
+            if (resultUpcoming != null) {
+                _state.value = HomeState.SuccessUpcoming(resultUpcoming)
             } else {
                 _state.value = HomeState.Error("Error")
             }

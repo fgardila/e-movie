@@ -12,6 +12,6 @@ data class DetailsModel(
     val status: String,
     val tagline: String,
     val title: String,
-    val voteAverage: Int,
-    val voteCount: Int
+    val voteAverage: Double,
+    val voteCount: Double
 )

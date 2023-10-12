@@ -6,8 +6,11 @@ import com.code93.e_movie.domain.model.UpcomingModel
 sealed class HomeState {
     object Loading : HomeState()
 
-    data class Success(
-        val topRatedModel: TopRatedModel,
+    data class SuccessTopRated(
+        val topRatedModel: TopRatedModel
+    ) : HomeState()
+
+    data class SuccessUpcoming(
         val upcomingModel: UpcomingModel
     ) : HomeState()
 

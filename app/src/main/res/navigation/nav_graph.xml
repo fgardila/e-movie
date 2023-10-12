@@ -25,5 +25,8 @@
         <argument
             android:name="posterPath"
             app:argType="string" />
+        <action
+            android:id="@+id/action_detailFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

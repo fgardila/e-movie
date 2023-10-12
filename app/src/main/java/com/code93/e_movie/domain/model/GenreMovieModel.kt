@@ -23,3 +23,7 @@ enum class GenreMovieModel(val id: Int, val nameResource: Int) {
     WAR(10752, R.string.genre_war),
     WESTERN(37, R.string.genre_western)
 }
+
+fun getGenresByIds(ids: List<Int>): List<GenreMovieModel> {
+    return GenreMovieModel.values().filter { ids.contains(it.id) }
+}

@@ -1,11 +1,15 @@
 package com.code93.e_movie.data.network
 
+import android.content.Context
 import com.code93.e_movie.data.RepositoryImpl
 import com.code93.e_movie.data.core.interceptors.AuthInterceptor
+import com.code93.e_movie.data.local.dao.TopRatedLocalDao
 import com.code93.e_movie.domain.Repository
+import com.code93.e_movie.ui.MainActivity
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -16,6 +20,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+
+    @Provides
+    fun provideApplicationContext(activity: MainActivity): Context {
+        return activity.applicationContext
+    }
 
     @Provides
     @Singleton
@@ -45,7 +54,11 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideRepository(apiService: TheMovieApiService): Repository {
-        return RepositoryImpl(apiService)
+    fun provideRepository(
+        apiService: TheMovieApiService,
+        topRatedLocalDao: TopRatedLocalDao,
+        @ApplicationContext appContext: Context
+    ): Repository {
+        return RepositoryImpl(apiService, topRatedLocalDao, appContext)
     }
 }

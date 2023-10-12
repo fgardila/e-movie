@@ -9,3 +9,7 @@ data class Genre(
     @SerializedName("name")
     val name: String
 )
+
+fun getIdsFromGenres(genres: List<Genre>): List<Int> {
+    return genres.map { it.id }
+}
