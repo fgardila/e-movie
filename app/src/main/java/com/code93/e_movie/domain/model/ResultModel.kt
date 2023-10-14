@@ -10,3 +10,13 @@ data class ResultModel(
     val releaseDate: String,
     val title: String,
 )
+
+fun createListReleaseYear(listResultModel: List<ResultModel>): List<String> {
+    return listResultModel.map { it.releaseDate.substring(0, 4) }
+}
+
+fun createListOriginalLanguage(listResultModel: List<ResultModel>): List<String> {
+    val listNew = listResultModel.map { it.originalLanguage }
+    val listDistinct = listNew.distinct()
+    return listDistinct
+}

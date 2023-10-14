@@ -21,15 +21,10 @@ class RepositoryImpl @Inject constructor(
     override suspend fun getTopRated(): TopRatedModel? {
         runCatching { theMovieApiService.getTopRated() }
             .onSuccess {
-                topRatedLocalDao.deleteAllTopRatedLocal()
-                topRatedLocalDao.insertTopRatedLocal(it.toLocal(context))
                 return it.toDomain()
             }
             .onFailure {
-                val topRatedLocal = topRatedLocalDao.getFirstTopRatedLocal()
-                topRatedLocal?.apply {
-                    return this.toDomain()
-                }
+                Log.i("Log App", "Ha ocurrido un error ${it.message}")
             }
         return null
     }

@@ -3,16 +3,22 @@ package com.code93.e_movie.ui.home
 import com.code93.e_movie.domain.model.TopRatedModel
 import com.code93.e_movie.domain.model.UpcomingModel
 
-sealed class HomeState {
-    object Loading : HomeState()
+sealed class HomeTopRateState {
+    object Loading : HomeTopRateState()
 
     data class SuccessTopRated(
         val topRatedModel: TopRatedModel
-    ) : HomeState()
+    ) : HomeTopRateState()
+
+    data class Error(val error: String) : HomeTopRateState()
+}
+
+sealed class HomeUpcomingState {
+    object Loading : HomeUpcomingState()
 
     data class SuccessUpcoming(
         val upcomingModel: UpcomingModel
-    ) : HomeState()
+    ) : HomeUpcomingState()
 
-    data class Error(val error: String) : HomeState()
+    data class Error(val error: String) : HomeUpcomingState()
 }

@@ -21,4 +21,38 @@
     <string name="genre_thriller">Suspense</string>
     <string name="genre_war">Bélica</string>
     <string name="genre_western">Western</string>
+
+    <string name="english">Inglés</string>
+    <string name="spanish">Español</string>
+    <string name="french">Francés</string>
+    <string name="german">Alemán</string>
+    <string name="italian">Italiano</string>
+    <string name="portuguese">Portugués</string>
+    <string name="dutch">Holandés</string>
+    <string name="russian">Ruso</string>
+    <string name="chinese">Chino</string>
+    <string name="japanese">Japonés</string>
+    <string name="korean">Coreano</string>
+    <string name="arabic">Árabe</string>
+    <string name="hindi">Hindi</string>
+    <string name="turkish">Turco</string>
+    <string name="swedish">Sueco</string>
+    <string name="danish">Danés</string>
+    <string name="norwegian">Noruego</string>
+    <string name="finnish">Finlandés</string>
+    <string name="greek">Griego</string>
+    <string name="hebrew">Hebreo</string>
+    <string name="polish">Polaco</string>
+    <string name="czech">Checo</string>
+    <string name="hungarian">Húngaro</string>
+    <string name="romanian">Rumano</string>
+    <string name="slovak">Eslovaco</string>
+    <string name="slovene">Esloveno</string>
+    <string name="croatian">Croata</string>
+    <string name="bulgarian">Búlgaro</string>
+    <string name="serbian">Serbio</string>
+    <string name="ukrainian">Ucraniano</string>
+
+    <string name="language">Language</string>
+    <string name="release_year">Año de lanzamiento</string>
 </resources>
