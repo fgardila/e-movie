@@ -2,12 +2,11 @@ package com.code93.e_movie.data.local.model
 import com.code93.e_movie.domain.model.ResultModel
 
 data class ResultLocal(
-    val backdropPath: String,
+    val backdropPath: String?,
     val genreIds: List<Int>,
     val id: Int,
     val originalLanguage: String,
     val posterPath: String,
-    val bitmapString: String,
     val releaseDate: String,
     val title: String
 ) {
@@ -18,7 +17,6 @@ data class ResultLocal(
             id = id,
             originalLanguage = this.originalLanguage,
             posterPath = "https://image.tmdb.org/t/p/w780${this.posterPath}",
-            bitmapString = bitmapString,
             releaseDate = this.releaseDate,
             title = this.title
         )

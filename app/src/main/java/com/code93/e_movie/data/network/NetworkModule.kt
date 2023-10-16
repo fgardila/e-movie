@@ -4,6 +4,7 @@ import android.content.Context
 import com.code93.e_movie.data.RepositoryImpl
 import com.code93.e_movie.data.core.interceptors.AuthInterceptor
 import com.code93.e_movie.data.local.dao.TopRatedLocalDao
+import com.code93.e_movie.data.local.dao.UpcomingLocalDao
 import com.code93.e_movie.domain.Repository
 import com.code93.e_movie.ui.MainActivity
 import dagger.Module
@@ -57,8 +58,8 @@ object NetworkModule {
     fun provideRepository(
         apiService: TheMovieApiService,
         topRatedLocalDao: TopRatedLocalDao,
-        @ApplicationContext appContext: Context
+        upcomingLocalDao: UpcomingLocalDao
     ): Repository {
-        return RepositoryImpl(apiService, topRatedLocalDao, appContext)
+        return RepositoryImpl(apiService, topRatedLocalDao, upcomingLocalDao)
     }
 }

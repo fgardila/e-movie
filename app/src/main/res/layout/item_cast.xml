@@ -20,14 +20,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/ivPhoto"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/container_image"
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:scaleType="centerCrop"
+                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@+id/tvNameCast"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/example_poster" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ivPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/example_poster" />
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/tvNameCast"
@@ -41,7 +47,7 @@
                 android:paddingEnd="8dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintTop_toBottomOf="@+id/ivPhoto"
+                app:layout_constraintTop_toBottomOf="@+id/container_image"
                 tools:layout_editor_absoluteX="0dp"
                 tools:text="Tom Cruice" />
 

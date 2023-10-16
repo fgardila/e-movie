@@ -3,12 +3,12 @@ package com.code93.e_movie.ui.detail
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -16,8 +16,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
+import coil.load
 import com.code93.e_movie.databinding.FragmentDetailBinding
 import com.code93.e_movie.domain.model.CastModel
 import com.code93.e_movie.domain.model.DetailsModel
@@ -103,10 +102,8 @@ class DetailFragment : Fragment() {
     }
 
     private fun initUi() {
-        Glide.with(requireContext())
-            .load(args.posterPath)
-            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-            .into(binding.ivPoster)
+
+        binding.ivPoster.load(args.posterPath)
 
         genreAdapter = GenreAdapter(emptyList())
         binding.rvGenre.adapter = genreAdapter

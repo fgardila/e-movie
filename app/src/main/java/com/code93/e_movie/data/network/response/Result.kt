@@ -1,7 +1,6 @@
 package com.code93.e_movie.data.network.response
 
 import android.content.Context
-import com.bumptech.glide.Glide
 import com.code93.e_movie.data.local.model.ResultLocal
 import com.code93.e_movie.domain.model.ResultModel
 import com.code93.e_movie.domain.util.ImageUtil
@@ -49,27 +48,16 @@ data class Result(
         )
     }
 
-    fun toLocal(context: Context): ResultLocal {
+    fun toLocal(): ResultLocal {
         return ResultLocal(
             backdropPath = this.backdropPath,
             genreIds = this.genreIds,
             id = id,
             originalLanguage = this.originalLanguage,
-            posterPath = "https://image.tmdb.org/t/p/w780${this.posterPath}",
-            bitmapString = getBitmap(context, "https://image.tmdb.org/t/p/w154${this.posterPath}"),
+            posterPath = this.posterPath,
             releaseDate = this.releaseDate,
             title = this.title
         )
-    }
-
-    private fun getBitmap(context: Context, path: String): String {
-        val bitmap = Glide.with(context)
-            .asBitmap()
-            .load(path)
-            .submit()
-            .get()
-
-        return ImageUtil.convert(bitmap)
     }
 }
 
@@ -81,10 +69,10 @@ fun listToDomain(list: List<Result>): List<ResultModel> {
     return resultModel
 }
 
-fun listToLocal(list: List<Result>, context: Context): List<ResultLocal> {
+fun listToLocal(list: List<Result>): List<ResultLocal> {
     val resultLocal = mutableListOf<ResultLocal>()
     list.map {
-        resultLocal.add(it.toLocal(context))
+        resultLocal.add(it.toLocal())
     }
     return resultLocal
 }

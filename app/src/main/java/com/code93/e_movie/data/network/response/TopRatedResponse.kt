@@ -24,10 +24,10 @@ data class TopRatedResponse(
         )
     }
 
-    fun toLocal(context: Context): TopRatedLocal {
+    fun toLocal(): TopRatedLocal {
         return TopRatedLocal(
             page = this.page,
-            resultModels = listToLocal(this.results, context),
+            resultModels = listToLocal(this.results),
             totalPages = this.totalPages,
             totalResults = this.totalResults
         )

@@ -18,7 +18,7 @@
     <string name="genre_romance">Romance</string>
     <string name="genre_science_fiction">Ciencia ficción</string>
     <string name="genre_tv_movie">Película de TV</string>
-    <string name="genre_thriller">Suspense</string>
+    <string name="genre_thriller">Suspenso</string>
     <string name="genre_war">Bélica</string>
     <string name="genre_western">Western</string>
 
@@ -53,6 +53,6 @@
     <string name="serbian">Serbio</string>
     <string name="ukrainian">Ucraniano</string>
 
-    <string name="language">Language</string>
+    <string name="language">Lenguaje</string>
     <string name="release_year">Año de lanzamiento</string>
 </resources>

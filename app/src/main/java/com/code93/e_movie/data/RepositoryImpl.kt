@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.code93.e_movie.data.local.MovieDatabase
 import com.code93.e_movie.data.local.dao.TopRatedLocalDao
+import com.code93.e_movie.data.local.dao.UpcomingLocalDao
 import com.code93.e_movie.data.network.TheMovieApiService
 import com.code93.e_movie.domain.Repository
 import com.code93.e_movie.domain.model.CastModel
@@ -16,15 +17,20 @@ import javax.inject.Inject
 class RepositoryImpl @Inject constructor(
     private val theMovieApiService: TheMovieApiService,
     private val topRatedLocalDao: TopRatedLocalDao,
-    private val context: Context
+    private val upcomingLocalDao: UpcomingLocalDao
 ) : Repository {
     override suspend fun getTopRated(): TopRatedModel? {
         runCatching { theMovieApiService.getTopRated() }
             .onSuccess {
+                topRatedLocalDao.deleteAllTopRatedLocal()
+                topRatedLocalDao.insertTopRatedLocal(it.toLocal())
                 return it.toDomain()
             }
             .onFailure {
-                Log.i("Log App", "Ha ocurrido un error ${it.message}")
+                val topRatedLocal = topRatedLocalDao.getFirstTopRatedLocal()
+                topRatedLocal?.apply {
+                    return this.toDomain()
+                }
             }
         return null
     }
@@ -32,10 +38,15 @@ class RepositoryImpl @Inject constructor(
     override suspend fun getUpcoming(): UpcomingModel? {
         runCatching { theMovieApiService.getUpcoming() }
             .onSuccess {
+                upcomingLocalDao.deleteAllUpcomingLocal()
+                upcomingLocalDao.insertUpcomingLocal(it.toLocal())
                 return it.toDomain()
             }
             .onFailure {
-                Log.i("Log App", "Ha ocurrido un error ${it.message}")
+                val upcomingLocal = upcomingLocalDao.getFirstUpcomingLocal()
+                upcomingLocal?.apply {
+                    return this.toDomain()
+                }
             }
         return null
     }

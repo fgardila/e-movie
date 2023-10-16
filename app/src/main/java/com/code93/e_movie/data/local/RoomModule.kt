@@ -5,6 +5,7 @@ import androidx.room.Room
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.code93.e_movie.data.local.dao.TopRatedLocalDao
+import com.code93.e_movie.data.local.dao.UpcomingLocalDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,12 +17,21 @@ object RoomModule {
 
     @Provides
     fun provideRoom(application: Application): MovieDatabase {
-        return Room.databaseBuilder(application, MovieDatabase::class.java, "movie_database").build()
+        return Room.databaseBuilder(
+            application,
+            MovieDatabase::class.java,
+            "movie_database"
+        ).build()
     }
 
     @Provides
-    fun provideTopRatedModelDao(database: MovieDatabase): TopRatedLocalDao {
+    fun provideTopRatedLocalDao(database: MovieDatabase): TopRatedLocalDao {
         return database.topRatedLocalDao()
+    }
+
+    @Provides
+    fun provideUpcomingLocalDao(database: MovieDatabase): UpcomingLocalDao {
+        return database.upcomingLocalDao()
     }
 
     // Define migración si es necesario (por ejemplo, de versión 1 a versión 2)

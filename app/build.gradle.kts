@@ -56,12 +56,13 @@ dependencies {
     implementation(libs.retrofit.converter.gson)
     implementation(libs.okhttp3.login.interceptor)
 
-    implementation(libs.glide)
-    kapt(libs.glide.compiler)
+    implementation(libs.io.coil)
 
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     kapt(libs.room.compiler)
+
+    implementation(libs.splash.screen)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

@@ -15,6 +15,7 @@ okhttp3 = "4.3.1"
 coil-version = "2.4.0"
 room-version = "2.5.0"
 glide-version = "4.14.2"
+splash-version = "1.0.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -37,9 +38,13 @@ navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", ver
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide-version" }
 glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide-version" }
 
+io-coil = { group = "io.coil-kt", name = "coil", version.ref = "coil-version" }
+
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room-version" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room-version" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room-version" }
+
+splash-screen = { group = "androidx.core", name = "core-splashscreen", version.ref = "splash-version" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }
